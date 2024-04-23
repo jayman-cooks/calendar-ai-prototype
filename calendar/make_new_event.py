@@ -13,9 +13,9 @@ def make_new_event(title: str, description: str, date):
     calendar_file = open("calendar.txt", "r+")
     cal_file_lines = calendar_file.readlines()
     date_point = f"{int_to_str_months[date[0]]} {date[2]}\n"
-    print(f"the line you want to put the date is {cal_file_lines.index(date_point) + date[0] +1}")
+    print(f"the line you want to put the date is {cal_file_lines.index(date_point) + date[1] +1}")
 
-    cal_file_lines[cal_file_lines.index(date_point) + date[0]] = f"{cal_file_lines[cal_file_lines.index(date_point)+date[0]][:-2]} {index}\n"
+    cal_file_lines[cal_file_lines.index(date_point) + date[1]] = f"{cal_file_lines[cal_file_lines.index(date_point)+date[1]][:-2]} {index} \n"
     calendar_file.close()
     calendar_file = open("calendar.txt", "w")
     calendar_file.writelines(cal_file_lines)
