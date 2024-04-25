@@ -5,7 +5,7 @@ int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "Ma
 
 def make_new_event(title: str, description: str, date):
     event_file = open("events.txt", "a")
-    event_file.write(f"({date}) ({title}) ({description})\n")
+    event_file.write(f"'{date}'_'{title}'_'{description}'\n")
     event_file.close()
     event_file = open("events.txt", "r")
     index = len(event_file.readlines()) - 1
