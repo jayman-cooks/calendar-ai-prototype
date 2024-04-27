@@ -1,5 +1,6 @@
 import calendar
 import datetime
+from read_events_from_date import read_event
 import time
 # WARNING: Do not edit calendar.txt
 years_out = 5
@@ -33,4 +34,4 @@ else:
                 cal_file.write(f"{str(x + 1)} \n")
     print("file finished")
     cal_file.close()
-
+print(read_event([4, 1, 2025]))

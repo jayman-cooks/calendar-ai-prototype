@@ -9,8 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/calendar/ai_func_cal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/calendar/read_events_ai.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/calendar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/calendar.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/cal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/events.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/events.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/read_events_from_date.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/read_events_from_date.py" afterDir="false" />
     </list>
@@ -40,10 +42,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.Test.executor": "Run",
+    "Python.assistant.executor": "Run",
     "Python.cal.executor": "Run",
     "Python.make_new_event.executor": "Run",
+    "Python.read_events_ai.executor": "Run",
     "Python.read_events_from_date.executor": "Run",
     "Python.scratch.executor": "Run",
+    "Python.testing_one.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "run.code.analysis.last.selected.profile": "pProject Default"
@@ -100,13 +106,22 @@
       <option name="project" value="LOCAL" />
       <updated>1713837363628</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first complete version of the calendar. I have a feeling theres a few bugs that I have to fix. Current functionality: Generate a calendar file, Add events to that file with an index to another file containing event details, and reading those descriptions and titles from the date.">
+      <option name="closed" value="true" />
+      <created>1714009133800</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714009133800</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="created project and added code that makes/appends to a text file with the correct number of days(leap years included I think) calendar. Next will try to figure out how to parse between everything and add events." />
     <MESSAGE value="Added a new file to add events, and add them to the calendar on the correct day" />
     <MESSAGE value="bug fixes on make_new_event.py, started working on read_events_from_date.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixes on make_new_event.py, started working on read_events_from_date.py" />
+    <MESSAGE value="first complete version of the calendar. I have a feeling theres a few bugs that I have to fix. Current functionality: Generate a calendar file, Add events to that file with an index to another file containing event details, and reading those descriptions and titles from the date." />
+    <option name="LAST_COMMIT_MESSAGE" value="first complete version of the calendar. I have a feeling theres a few bugs that I have to fix. Current functionality: Generate a calendar file, Add events to that file with an index to another file containing event details, and reading those descriptions and titles from the date." />
   </component>
 </project>
