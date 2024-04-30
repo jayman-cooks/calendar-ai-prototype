@@ -3,3 +3,7 @@
 '[4, 1, 2025]'_'testing'_'I am testing if this works'
 '[4, 1, 2025]'_'testing'_'robotics competition'
 '[4, 1, 2025]'_'testing'_'I am testing if this works'
+'[4, 1, 2025]'_'Doctor's Appointment'_'Appointment with Dr. Young at 3'
+'[4, 1, 2025]'_'Club Meeting'_'Meet with Xavier, William, and Ben at 4:30.'
+'[2, 25, 2022]'_'Error or testing'_'Testing - the description likely wasn't processed'
+'[4, 1, 2025]'_'phenol testing'_'testing'

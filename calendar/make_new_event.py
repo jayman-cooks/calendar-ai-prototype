@@ -23,4 +23,4 @@ def make_new_event(title: str, description: str, date):
     print(index)
 
 
-make_new_event("testing", "I am testing if this works", [4, 1, 2025])
+make_new_event("Club Meeting", "Meet with Xavier, William, and Ben at 4:30.", [4, 1, 2025])

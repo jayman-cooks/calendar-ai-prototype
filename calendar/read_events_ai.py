@@ -9,7 +9,7 @@ int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "Ma
                      9: "September", 10: "October", 11: "November", 12: "December"}
 
 def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
-    """Use this function to multiply a number by two.
+    """Use this function to find current events
 
     Args:
         day (int): The day of the event
