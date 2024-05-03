@@ -8,9 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="">
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Added text to speach to the output. Doesn't sound very good, so I will change this soon.">
+      <change afterPath="$PROJECT_DIR$/calendar/en_US-lessac-medium.onnx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/calendar/en_US-lessac-medium.onnx.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/events.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/events.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/total_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/total_assistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714452061361</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added text to speach to the output. Doesn't sound very good, so I will change this soon.">
+      <option name="closed" value="true" />
+      <created>1714713594581</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714713594581</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -151,6 +160,7 @@
     <MESSAGE value="first complete version of the calendar. I have a feeling theres a few bugs that I have to fix. Current functionality: Generate a calendar file, Add events to that file with an index to another file containing event details, and reading those descriptions and titles from the date." />
     <MESSAGE value="First semi working iteration of the ai integration thing. Basically now it can take natural language with the name of a date and output natural language of the descriptions and titles. It for some reason tries to contextualize that information. It also can't take  the name of the month instead of the number. Sometimes works when provided with nth month instead of date. It also interprets dates as dd/mm/yy, which is interesting (despite their name, Nous Research is based in NY). Possibly a remnant from mixtrel? Next is to add this but for creating events." />
     <MESSAGE value="Made the function for making events a tool for the assistant. Added speach to text so now you can ask it prompts through default microphone, and it will respond. STT is very buggy though." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the function for making events a tool for the assistant. Added speach to text so now you can ask it prompts through default microphone, and it will respond. STT is very buggy though." />
+    <MESSAGE value="Added text to speach to the output. Doesn't sound very good, so I will change this soon." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added text to speach to the output. Doesn't sound very good, so I will change this soon." />
   </component>
 </project>

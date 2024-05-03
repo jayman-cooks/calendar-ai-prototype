@@ -6,7 +6,7 @@ import httpx
 from phi.assistant import Assistant
 from phi.llm.ollama import Hermes
 import speech_recognition as sr
-import pyttsx3
+import os
 int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August",
                      9: "September", 10: "October", 11: "November", 12: "December"}
 
@@ -86,7 +86,6 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
 
 
 recog = sr.Recognizer()
-engine = pyttsx3.init()
 microphone = sr.Microphone()
 print("listening...")
 with microphone as source:
@@ -99,5 +98,16 @@ assistant = Assistant(tools=[find_event, make_event], show_tool_calls=True, llm=
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)
-engine.say(response)
-engine.runAndWait()
+
+
+print(response.split(")")[1])
+translation_table = dict.fromkeys(map(ord, '\n'), None)
+tts_line = response.split(")")[1].translate(translation_table)
+print(tts_line)
+print(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
+#os.system("echo 'Welcome to the world of speech synthesis!' | piper --model en_US-lessac-medium --output_file welcome.wav") -- downloads model
+
+os.system(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
+
+
+
