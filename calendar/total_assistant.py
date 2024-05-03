@@ -6,16 +6,10 @@ import httpx
 from phi.assistant import Assistant
 from phi.llm.ollama import Hermes
 import speech_recognition as sr
+import pyttsx3
 int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August",
                      9: "September", 10: "October", 11: "November", 12: "December"}
-print(sr.__version__)
-recog = sr.Recognizer()
-microphone = sr.Microphone()
-print("listening...")
-with microphone as source:
-    audio = recog.listen(source)
-prompt = recog.recognize_sphinx(audio)
-print(prompt)
+
 
 
 def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
@@ -90,6 +84,20 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
     print(index)
     return f"created an event titled {title}, with description: {description}, on  {int_to_str_months[month]}, {day}. {year}"
 
+
+recog = sr.Recognizer()
+engine = pyttsx3.init()
+microphone = sr.Microphone()
+print("listening...")
+with microphone as source:
+    audio = recog.listen(source)
+prompt = recog.recognize_sphinx(audio)
+print(prompt)
 assistant = Assistant(tools=[find_event, make_event], show_tool_calls=True, llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"), description="You are a secretary assistant who provides helpful and concise information about the user's calendar")
 #show me whats happening on 1, 4, 2025
-assistant.print_response(prompt)
+#print(f"this is whats is being self printed:{assistant.convert_response_to_string(prompt)}")
+response = assistant.run(prompt, stream=False)
+print("Below is the response:")
+print(response)
+engine.say(response)
+engine.runAndWait()

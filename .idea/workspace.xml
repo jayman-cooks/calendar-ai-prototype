@@ -8,15 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="First semi working iteration of the ai integration thing. Basically now it can take natural language with the name of a date and output natural language of the descriptions and titles. It for some reason tries to contextualize that information. It also can't take  the name of the month instead of the number. Sometimes works when provided with nth month instead of date. It also interprets dates as dd/mm/yy, which is interesting (despite their name, Nous Research is based in NY). Possibly a remnant from mixtrel? Next is to add this but for creating events.">
-      <change afterPath="$PROJECT_DIR$/calendar/create_event_ai.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendar/total_assistant.py" afterDir="false" />
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/calendar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/calendar.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/events.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/events.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/make_event_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/make_event_ai.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/make_new_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/make_new_event.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/read_events_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/read_events_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/total_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/total_assistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "jmancodes27"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jmancodes27/calendar-ai-prototype.git",
+    "accountId": "7c86eb39-8fd5-41af-93d0-551a0b1dd81f"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -42,29 +49,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Test.executor": "Run",
-    "Python.assistant.executor": "Run",
-    "Python.cal.executor": "Run",
-    "Python.create_event_ai.executor": "Run",
-    "Python.make_new_event.executor": "Run",
-    "Python.read_events_ai.executor": "Run",
-    "Python.read_events_from_date.executor": "Run",
-    "Python.scratch.executor": "Run",
-    "Python.testing_one.executor": "Run",
-    "Python.total_assistant.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.assistant.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_event_ai.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_new_event.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read_events_ai.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read_events_from_date.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testing_one.executor&quot;: &quot;Run&quot;,
+    &quot;Python.total_assistant.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT",
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;,
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/calendar" />
@@ -126,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714194664819</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Made the function for making events a tool for the assistant. Added speach to text so now you can ask it prompts through default microphone, and it will respond. STT is very buggy though.">
+      <option name="closed" value="true" />
+      <created>1714452061361</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714452061361</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,6 +150,7 @@
     <MESSAGE value="bug fixes on make_new_event.py, started working on read_events_from_date.py" />
     <MESSAGE value="first complete version of the calendar. I have a feeling theres a few bugs that I have to fix. Current functionality: Generate a calendar file, Add events to that file with an index to another file containing event details, and reading those descriptions and titles from the date." />
     <MESSAGE value="First semi working iteration of the ai integration thing. Basically now it can take natural language with the name of a date and output natural language of the descriptions and titles. It for some reason tries to contextualize that information. It also can't take  the name of the month instead of the number. Sometimes works when provided with nth month instead of date. It also interprets dates as dd/mm/yy, which is interesting (despite their name, Nous Research is based in NY). Possibly a remnant from mixtrel? Next is to add this but for creating events." />
-    <option name="LAST_COMMIT_MESSAGE" value="First semi working iteration of the ai integration thing. Basically now it can take natural language with the name of a date and output natural language of the descriptions and titles. It for some reason tries to contextualize that information. It also can't take  the name of the month instead of the number. Sometimes works when provided with nth month instead of date. It also interprets dates as dd/mm/yy, which is interesting (despite their name, Nous Research is based in NY). Possibly a remnant from mixtrel? Next is to add this but for creating events." />
+    <MESSAGE value="Made the function for making events a tool for the assistant. Added speach to text so now you can ask it prompts through default microphone, and it will respond. STT is very buggy though." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the function for making events a tool for the assistant. Added speach to text so now you can ask it prompts through default microphone, and it will respond. STT is very buggy though." />
   </component>
 </project>
