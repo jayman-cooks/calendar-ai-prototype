@@ -35,3 +35,19 @@ else:
     print("file finished")
     cal_file.close()
 print(read_event([4, 1, 2025]))
+
+def gen_cal2():
+    years_out = 5
+    date = str(datetime.date.today()).split("-")
+    year = int(date[0])
+    month = int(date[1])
+    years = {}
+    for i in range(years_out):
+        years.update({
+            str(year + i): {
+
+            }
+        })
+    for i in range(years_out):
+        for x in range(12):
+            #years[str(year + i)].update()

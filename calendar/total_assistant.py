@@ -11,7 +11,6 @@ int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "Ma
                      9: "September", 10: "October", 11: "November", 12: "December"}
 
 
-
 def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
     """Use this function to find current events
 
@@ -40,8 +39,8 @@ def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
             print(cur_event_parsed)
             if cur_event_parsed[0][1:-1] == str(date):
                 print("Dates align. Proceeding..")
-                print(f" Data for event {i}: Title: {cur_event_parsed[1][1:-1]}, Description: {cur_event_parsed[2][1:-1]}")
-                response_list += f" Data for event {i}: Title: {cur_event_parsed[1][1:-1]}, Description: {cur_event_parsed[2][1:-1]}"
+                print(f" Data for event {i}: Title: {cur_event_parsed[1][1:-1]}, Description: {cur_event_parsed[2][1:-1]} Time: {cur_event_parsed[3][1:-1]}:{cur_event_parsed[4][1:-1]}")
+                response_list += f" Data for event {i}: Title: {cur_event_parsed[1][1:-1]}, Description: {cur_event_parsed[2][1:-1]} Time: {cur_event_parsed[3][1:-1]}:{cur_event_parsed[4][1:-1]}"
             else:
                 print("Dates do not align. Something wrong has happened")
                 print(f"The date of the event is {cur_event_parsed[0][1:-1]}")
@@ -49,7 +48,8 @@ def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
     except:
         print("Something went wrong. Try deleting contents in calendar.txt and running cal.py")
 
-def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing") -> str:
+
+def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0) -> str:
     """Use this function to find current events
 
     Args:
@@ -58,6 +58,8 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
         year (int): The year of the event
         description (str): The description of the event to be added
         title (str): The title of the event to be added
+        hour (int): The hour at the start time of the event
+        minutes (int): The minutes at the start time of the event
 
     Returns:
         str: The date, title, and description of the event added
@@ -65,7 +67,7 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
     date = [month, day, year]
     print(date)
     event_file = open("events.txt", "a")
-    event_file.write(f"'{date}'_'{title}'_'{description}'\n")
+    event_file.write(f"'{date}'_'{title}'_'{description}'_'{hour}'_'{minutes}'\n")
     event_file.close()
     event_file = open("events.txt", "r")
     index = len(event_file.readlines()) - 1
@@ -92,9 +94,12 @@ with microphone as source:
     audio = recog.listen(source)
 prompt = recog.recognize_sphinx(audio)
 print(prompt)
-assistant = Assistant(tools=[find_event, make_event], show_tool_calls=True, llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"), description="You are a secretary assistant who provides helpful and concise information about the user's calendar")
+assistant = Assistant(
+    tools=[find_event, make_event],
+    show_tool_calls=True,
+    llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
+    description="You are a secretary assistant who provides helpful and concise information about the user's calendar")
 #show me whats happening on 1, 4, 2025
-#print(f"this is whats is being self printed:{assistant.convert_response_to_string(prompt)}")
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)

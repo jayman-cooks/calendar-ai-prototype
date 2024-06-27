@@ -1,11 +1,12 @@
 #  date format mm/dd/yyyy
+import json
 int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August",
                      9: "September", 10: "October", 11: "November", 12: "December"}
 
 
-def make_new_event(title: str, description: str, date):
+def make_new_event(title: str, description: str, date, hour: int, minutes: int):
     event_file = open("events.txt", "a")
-    event_file.write(f"'{date}'_'{title}'_'{description}'\n")
+    event_file.write(f"'{date}'_'{title}'_'{description}'_'{hour}'_'{minutes}'\n")
     event_file.close()
     event_file = open("events.txt", "r")
     index = len(event_file.readlines()) - 1
@@ -23,4 +24,29 @@ def make_new_event(title: str, description: str, date):
     print(index)
 
 
-make_new_event("Club Meeting", "Meet with Xavier, William, and Ben at 4:30.", [4, 1, 2025])
+
+
+
+def make_new_event2(title: str, description: str, date, hour: int, minutes: int):
+    event = {
+        title: {
+            "Title": title,
+            "Description": description,
+            "Date": {
+                "Year": date[2],
+                "Month": date[1],
+                "Day": date[0],
+                "Hour": hour,
+                "Minute": minutes
+            }
+        }
+    }
+    with open('events2.json', 'r') as openfile:
+        old_events = json.load(openfile)
+    old_events.update(event)
+    json_obj = json.dumps(old_events, indent=3)
+    with open("events2.json", "w") as outfile:
+        outfile.write(json_obj)
+
+
+make_new_event2("Club Meeting", "Meet with Xavier, William, and Ben at 4:30.", [4, 1, 2025], 12, 30)

@@ -8,10 +8,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Added text to speach to the output. Doesn't sound very good, so I will change this soon.">
-      <change afterPath="$PROJECT_DIR$/calendar/en_US-lessac-medium.onnx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendar/en_US-lessac-medium.onnx.json" afterDir="false" />
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/calendar/calendar.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/calendar/events2.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/calendar/index_ics_calendar.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/cal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/calendar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/calendar.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/events.txt" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/events.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/make_new_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/make_new_event.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/read_events_from_date.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/read_events_from_date.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/total_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/total_assistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,18 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "jmancodes27"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jmancodes27&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/jmancodes27/calendar-ai-prototype.git",
-    "accountId": "7c86eb39-8fd5-41af-93d0-551a0b1dd81f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jmancodes27/calendar-ai-prototype.git&quot;,
+    &quot;accountId&quot;: &quot;7c86eb39-8fd5-41af-93d0-551a0b1dd81f&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -50,29 +56,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.assistant.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cal.executor&quot;: &quot;Run&quot;,
-    &quot;Python.create_event_ai.executor&quot;: &quot;Run&quot;,
-    &quot;Python.make_new_event.executor&quot;: &quot;Run&quot;,
-    &quot;Python.read_events_ai.executor&quot;: &quot;Run&quot;,
-    &quot;Python.read_events_from_date.executor&quot;: &quot;Run&quot;,
-    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
-    &quot;Python.testing_one.executor&quot;: &quot;Run&quot;,
-    &quot;Python.total_assistant.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Test.executor": "Run",
+    "Python.assistant.executor": "Run",
+    "Python.cal.executor": "Run",
+    "Python.create_event_ai.executor": "Run",
+    "Python.index_ics_calendar.executor": "Run",
+    "Python.make_new_event.executor": "Run",
+    "Python.read_events_ai.executor": "Run",
+    "Python.read_events_from_date.executor": "Run",
+    "Python.scratch.executor": "Run",
+    "Python.testing.executor": "Run",
+    "Python.testing_one.executor": "Run",
+    "Python.total_assistant.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;TEXT&quot;,
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT",
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/calendar" />
@@ -81,7 +89,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241" />
+        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
       </set>
     </attachedChunks>
   </component>
@@ -150,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714713594581</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added a much better text to speech. I decided not to use a more realistic voice to decrease the time until the user receives the response. Had to parse and filter the output a bit.">
+      <option name="closed" value="true" />
+      <created>1714717382848</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714717382848</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -161,6 +177,7 @@
     <MESSAGE value="First semi working iteration of the ai integration thing. Basically now it can take natural language with the name of a date and output natural language of the descriptions and titles. It for some reason tries to contextualize that information. It also can't take  the name of the month instead of the number. Sometimes works when provided with nth month instead of date. It also interprets dates as dd/mm/yy, which is interesting (despite their name, Nous Research is based in NY). Possibly a remnant from mixtrel? Next is to add this but for creating events." />
     <MESSAGE value="Made the function for making events a tool for the assistant. Added speach to text so now you can ask it prompts through default microphone, and it will respond. STT is very buggy though." />
     <MESSAGE value="Added text to speach to the output. Doesn't sound very good, so I will change this soon." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added text to speach to the output. Doesn't sound very good, so I will change this soon." />
+    <MESSAGE value="Added a much better text to speech. I decided not to use a more realistic voice to decrease the time until the user receives the response. Had to parse and filter the output a bit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a much better text to speech. I decided not to use a more realistic voice to decrease the time until the user receives the response. Had to parse and filter the output a bit." />
   </component>
 </project>
