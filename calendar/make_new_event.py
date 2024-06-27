@@ -24,29 +24,26 @@ def make_new_event(title: str, description: str, date, hour: int, minutes: int):
     print(index)
 
 
-
-
-
 def make_new_event2(title: str, description: str, date, hour: int, minutes: int):
     event = {
-        title: {
+        {
             "Title": title,
             "Description": description,
             "Date": {
                 "Year": date[2],
-                "Month": date[1],
-                "Day": date[0],
+                "Month": date[0],
+                "Day": date[1],
                 "Hour": hour,
                 "Minute": minutes
             }
         }
     }
-    with open('events2.json', 'r') as openfile:
+    with open('calendar.json', 'r') as openfile:
         old_events = json.load(openfile)
-    old_events.update(event)
+    old_events[str(date[2])][str(date[0])][str(date[1])].update(event)
     json_obj = json.dumps(old_events, indent=3)
-    with open("events2.json", "w") as outfile:
+    with open("calendar.json", "w") as outfile:
         outfile.write(json_obj)
 
 
-make_new_event2("Club Meeting", "Meet with Xavier, William, and Ben at 4:30.", [4, 1, 2025], 12, 30)
+make_new_event2("Dinner", "Dinner with Joseph.", [4, 1, 2025], 17, 30)
