@@ -11,7 +11,7 @@ int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "Ma
                      9: "September", 10: "October", 11: "November", 12: "December"}
 
 
-def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
+def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
     """Use this function to find current events
 
     Args:
@@ -20,16 +20,25 @@ def find_event(day: int = 1, month: int = 4, year: int = 2024) -> str:
         year (int): The year of the event
 
     Returns:
-        str: The descriptions and titles of the events.
+        str: The descriptions. titles, and times of the events.
     """
     with open('calendar.json', 'r') as openfile:
         calendar = json.load(openfile)
+    events = calendar[str(year)][str(month)][str(day)]
+    return_list = []
+    for i in range(len(events)):
+        return_list.append([events[str(i)]["Title"], events[str(i)]["Description"], f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
+    print(return_list)
     print(f"here are all the events: {calendar[str(year)][str(month)][str(day)]}")
-    return f"here are all the events: {calendar[str(year)][str(month)][str(day)]}"
+    #return calendar[str(date[2])][str(date[0])][str(date[1])]
+    return_str = f"You have {len(return_list)} events for that day: "
+    for i in range(len(return_list)):
+        return_str += f"{i + 1}. {return_list[i][0]} - {return_list[i][1]} at {return_list[i][2]}"
+    return return_str
 
 
 def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0) -> str:
-    """Use this function to find current events
+    """Use this function to create an event
 
     Args:
         day (int): The day of the event
@@ -43,28 +52,27 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
     Returns:
         str: The date, title, and description of the event added
     """
-    date = [month, day, year]
-    print(date)
-    event_file = open("events.txt", "a")
-    event_file.write(f"'{date}'_'{title}'_'{description}'_'{hour}'_'{minutes}'\n")
-    event_file.close()
-    event_file = open("events.txt", "r")
-    index = len(event_file.readlines()) - 1
-    event_file.close()
-    calendar_file = open("calendar.txt", "r+")
-    cal_file_lines = calendar_file.readlines()
-    date_point = f"{int_to_str_months[date[0]]} {date[2]}\n"
-    print(f"the line you want to put the date is {cal_file_lines.index(date_point) + date[1] + 1}")
-
-    cal_file_lines[cal_file_lines.index(date_point) + date[
-        1]] = f"{cal_file_lines[cal_file_lines.index(date_point) + date[1]][:-2]} {index} \n"
-    calendar_file.close()
-    calendar_file = open("calendar.txt", "w")
-    calendar_file.writelines(cal_file_lines)
-    calendar_file.close()
-    print(index)
-    return f"created an event titled {title}, with description: {description}, on  {int_to_str_months[month]}, {day}. {year}"
-
+    with open('calendar.json', 'r') as openfile:
+        old_events = json.load(openfile)
+    index = len(old_events[str(year)][str(month)][str(day)])
+    event = {
+        index: {
+            "Title": title,
+            "Description": description,
+            "Date": {
+                "Year": year,
+                "Month": month,
+                "Day": day,
+                "Hour": hour,
+                "Minute": minutes
+            }
+        }
+    }
+    old_events[str(year)][str(month)][str(day)].update(event)
+    json_obj = json.dumps(old_events, indent=3)
+    with open("calendar.json", "w") as outfile:
+        outfile.write(json_obj)
+    return f"Created an event on {int_to_str_months[month]} {day} {year} with the title: {title}, description: {description}, at {hour}:{minutes}"
 
 recog = sr.Recognizer()
 microphone = sr.Microphone()
@@ -74,24 +82,24 @@ with microphone as source:
 prompt = recog.recognize_sphinx(audio)
 print(prompt)
 assistant = Assistant(
-    tools=[find_event, make_event],
-    show_tool_calls=True,
+    tools=[find_events, make_event],
+    show_tool_calls=False,
     llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
-    description="You are a secretary assistant who provides helpful and concise information about the user's calendar")
+    description="You are a secretary assistant who provides helpful and concise information about the user's calendar. If the user asks what is happening on a day, use find_events")
 #show me whats happening on 1, 4, 2025
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)
 
 
-print(response.split(")")[1])
-translation_table = dict.fromkeys(map(ord, '\n'), None)
-tts_line = response.split(")")[1].translate(translation_table)
-print(tts_line)
-print(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
+#print(response.split(")")[1])
+#translation_table = dict.fromkeys(map(ord, '\n'), None)
+#tts_line = response.split(")")[1].translate(translation_table)
+#print(tts_line)
+#print(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
 #os.system("echo 'Welcome to the world of speech synthesis!' | piper --model en_US-lessac-medium --output_file welcome.wav") -- downloads model
 
-os.system(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
+os.system(f"echo '{response}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
 
 
 

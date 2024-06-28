@@ -8,7 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="started to convert data storage to .json">
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="continued to change to JSON format. Finished cal.py (generating the calendar without events)">
+      <change afterPath="$PROJECT_DIR$/calendar/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/cal.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/cal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/calendar.json" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/calendar.json" afterDir="false" />
@@ -170,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719460969117</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="continued to change to JSON format. Finished cal.py (generating the calendar without events)">
+      <option name="closed" value="true" />
+      <created>1719469808474</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719469808474</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -183,6 +192,7 @@
     <MESSAGE value="Added text to speach to the output. Doesn't sound very good, so I will change this soon." />
     <MESSAGE value="Added a much better text to speech. I decided not to use a more realistic voice to decrease the time until the user receives the response. Had to parse and filter the output a bit." />
     <MESSAGE value="started to convert data storage to .json" />
-    <option name="LAST_COMMIT_MESSAGE" value="started to convert data storage to .json" />
+    <MESSAGE value="continued to change to JSON format. Finished cal.py (generating the calendar without events)" />
+    <option name="LAST_COMMIT_MESSAGE" value="continued to change to JSON format. Finished cal.py (generating the calendar without events)" />
   </component>
 </project>
