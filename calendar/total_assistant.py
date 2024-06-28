@@ -7,6 +7,7 @@ from phi.assistant import Assistant
 from phi.llm.ollama import Hermes
 import speech_recognition as sr
 import os
+import calendar as calp
 int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August",
                      9: "September", 10: "October", 11: "November", 12: "December"}
 
@@ -30,13 +31,49 @@ def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
         return_list.append([events[str(i)]["Title"], events[str(i)]["Description"], f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
     print(return_list)
     print(f"here are all the events: {calendar[str(year)][str(month)][str(day)]}")
-    #return calendar[str(date[2])][str(date[0])][str(date[1])]
     return_str = f"You have {len(return_list)} events for that day: "
     for i in range(len(return_list)):
         return_str += f"{i + 1}. {return_list[i][0]} - {return_list[i][1]} at {return_list[i][2]}"
     return return_str
 
 
+def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug if week extends out of month
+    """Use this function to find all events in a given week
+
+    Args:
+        day (int): The first day of the week
+        month (int): The month of the first day of the week
+        year (int): The year of the first day of the week
+
+    Returns:
+        str: The descriptions. titles, and times of the events.
+    """
+    return_list = []
+    days_in_month = calp.monthrange(year, month)[1]
+    if day + 7 > days_in_month:
+        print("There might be a bug")
+        if month > 11:
+            print("theres might be a bug")
+    for x in range(7):
+        if day + x > days_in_month:
+            print("uh oh there might be a bug")
+            if month > 11:
+                year += 1
+                month = 1
+                day = 1
+            else:
+                month += 1
+                day = 1
+        with open('calendar.json', 'r') as openfile:
+            calendar = json.load(openfile)
+        events = calendar[str(year)][str(month)][str(day + x)]
+        for i in range(len(events)):
+            return_list.append([events[str(i)]["Title"], events[str(i)]["Description"],
+                                f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
+    return_str = f"You have {len(return_list)} events for that week: "
+    for i in range(len(return_list)):
+        return_str += f"{i + 1}. {return_list[i][0]} - {return_list[i][1]} at {return_list[i][2]}"
+    return return_str
 def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0) -> str:
     """Use this function to create an event
 
@@ -79,14 +116,14 @@ microphone = sr.Microphone()
 print("listening...")
 with microphone as source:
     audio = recog.listen(source)
-prompt = recog.recognize_sphinx(audio)
+prompt = recog.recognize_whisper(audio)
 print(prompt)
 assistant = Assistant(
-    tools=[find_events, make_event],
+    tools=[find_events, make_event, find_events_in_week],
     show_tool_calls=False,
     llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
-    description="You are a secretary assistant who provides helpful and concise information about the user's calendar. If the user asks what is happening on a day, use find_events")
-#show me whats happening on 1, 4, 2025
+    description="You are a secretary assistant who provides helpful and concise information about the user's calendar. If the user asks what is happening on a day, use find_events, but if they ask for a week, use find_events_in_week")
+# show me whats happening on 1, 4, 2025
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)
