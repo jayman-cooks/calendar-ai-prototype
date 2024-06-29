@@ -7,7 +7,7 @@ int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "Ma
 
 
 
-def make_new_event2(title: str, description: str, date, hour: int, minutes: int):
+def make_new_event2(title: str, description: str, date, hour: int, minutes: int, people_associated: list = []):
     with open('calendar.json', 'r') as openfile:
         old_events = json.load(openfile)
     index = len(old_events[str(date[2])][str(date[0])][str(date[1])])
@@ -15,6 +15,7 @@ def make_new_event2(title: str, description: str, date, hour: int, minutes: int)
         index: {
             "Title": title,
             "Description": description,
+            "People": {},
             "Date": {
                 "Year": date[2],
                 "Month": date[0],
@@ -24,10 +25,12 @@ def make_new_event2(title: str, description: str, date, hour: int, minutes: int)
             }
         }
     }
+    for i in range(len(people_associated)):
+        event[index]["People"].update({str(i): people_associated[i]})
     old_events[str(date[2])][str(date[0])][str(date[1])].update(event)
     json_obj = json.dumps(old_events, indent=3)
     with open("calendar.json", "w") as outfile:
         outfile.write(json_obj)
 
 
-make_new_event2("Meeting", "Meeting with John.", [4, 1, 2025], 12, 30)
+make_new_event2("Meeting", "Meeting with John.", [4, 4, 2025], 12, 30, ["John"])

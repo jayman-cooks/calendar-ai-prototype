@@ -49,6 +49,7 @@ def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug
         str: The descriptions. titles, and times of the events.
     """
     return_list = []
+    bug_fix = 0 # to fix a bug that prevented it from searching correct days for month overflow
     days_in_month = calp.monthrange(year, month)[1]
     if day + 7 > days_in_month:
         print("There might be a bug")
@@ -62,11 +63,17 @@ def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug
                 month = 1
                 day = 1
             else:
+                print("variables have been added to")
                 month += 1
                 day = 1
+                bug_fix = x
+                print(f"month is {month}")
+                print(f"day is {day}")
         with open('calendar.json', 'r') as openfile:
             calendar = json.load(openfile)
-        events = calendar[str(year)][str(month)][str(day + x)]
+        print(day + x - bug_fix)
+        events = calendar[str(year)][str(month)][str(day + x - bug_fix)]
+        print(events)
         for i in range(len(events)):
             return_list.append([events[str(i)]["Title"], events[str(i)]["Description"],
                                 f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
@@ -74,7 +81,7 @@ def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug
     for i in range(len(return_list)):
         return_str += f"{i + 1}. {return_list[i][0]} - {return_list[i][1]} at {return_list[i][2]}"
     return return_str
-def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0) -> str:
+def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0, people_associated: list = []) -> str:
     """Use this function to create an event
 
     Args:
@@ -96,6 +103,7 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
         index: {
             "Title": title,
             "Description": description,
+            "People": {},
             "Date": {
                 "Year": year,
                 "Month": month,
@@ -105,6 +113,8 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
             }
         }
     }
+    for i in range(len(people_associated)):
+        event[index]["People"].update({str(i): people_associated[i]})
     old_events[str(year)][str(month)][str(day)].update(event)
     json_obj = json.dumps(old_events, indent=3)
     with open("calendar.json", "w") as outfile:

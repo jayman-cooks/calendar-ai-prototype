@@ -8,11 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="moved readme to proper directory">
-      <change afterPath="$PROJECT_DIR$/calendar/find_events_in_week.py" afterDir="false" />
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Switched speech recognition to whisper, added a find events in week function(potential bug), added a bit to readme.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/calendar.json" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/calendar.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/make_new_event.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/make_new_event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/total_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/total_assistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,32 +50,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Test.executor": "Run",
-    "Python.assistant.executor": "Run",
-    "Python.cal.executor": "Run",
-    "Python.create_event_ai.executor": "Run",
-    "Python.find_events_in_week.executor": "Run",
-    "Python.index_ics_calendar.executor": "Run",
-    "Python.make_new_event.executor": "Run",
-    "Python.read_events_ai.executor": "Run",
-    "Python.read_events_from_date.executor": "Run",
-    "Python.scratch.executor": "Run",
-    "Python.testing.executor": "Run",
-    "Python.testing_one.executor": "Run",
-    "Python.total_assistant.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.assistant.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_event_ai.executor&quot;: &quot;Run&quot;,
+    &quot;Python.find_events_in_week.executor&quot;: &quot;Run&quot;,
+    &quot;Python.index_ics_calendar.executor&quot;: &quot;Run&quot;,
+    &quot;Python.make_new_event.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read_events_ai.executor&quot;: &quot;Run&quot;,
+    &quot;Python.read_events_from_date.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testing_one.executor&quot;: &quot;Run&quot;,
+    &quot;Python.total_assistant.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT",
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;,
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -203,7 +202,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719534386166</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Switched speech recognition to whisper, added a find events in week function(potential bug), added a bit to readme.">
+      <option name="closed" value="true" />
+      <created>1719609549574</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719609549574</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -219,6 +226,7 @@
     <MESSAGE value="continued to change to JSON format. Finished cal.py (generating the calendar without events)" />
     <MESSAGE value="Finished converting everything to JSON. Total assistant is still very buggy though" />
     <MESSAGE value="moved readme to proper directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved readme to proper directory" />
+    <MESSAGE value="Switched speech recognition to whisper, added a find events in week function(potential bug), added a bit to readme." />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched speech recognition to whisper, added a find events in week function(potential bug), added a bit to readme." />
   </component>
 </project>

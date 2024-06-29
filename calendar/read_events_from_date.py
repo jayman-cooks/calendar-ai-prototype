@@ -12,7 +12,10 @@ def read_events2(date):
     events = calendar[str(year)][str(month)][str(day)]
     return_list = []
     for i in range(len(events)):
-        return_list.append([events[str(i)]["Title"], events[str(i)]["Description"], f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
+        return_list.append([events[str(i)]["Title"], events[str(i)]["Description"],
+                            f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}", []])
+        for x in range(len(events[str(i)]["People"])):
+            return_list[i][3].append(events[str(i)]["People"][str(x)])
     print(return_list)
     print(f"here are all the events: {calendar[str(year)][str(month)][str(day)]}")
     return calendar[str(date[2])][str(date[0])][str(date[1])]
