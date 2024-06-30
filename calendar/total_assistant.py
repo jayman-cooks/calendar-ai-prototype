@@ -28,12 +28,20 @@ def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
     events = calendar[str(year)][str(month)][str(day)]
     return_list = []
     for i in range(len(events)):
-        return_list.append([events[str(i)]["Title"], events[str(i)]["Description"], f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
+        return_list.append([events[str(i)]["Title"], events[str(i)]["Description"],
+                            f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}", [], events[str(i)]["Priority"]])
+        for y in range(len(events[str(i)]["People"])):
+            return_list[i][3].append(events[str(i)]["People"][str(y)])
     print(return_list)
     print(f"here are all the events: {calendar[str(year)][str(month)][str(day)]}")
-    return_str = f"You have {len(return_list)} events for that day: "
+    return_str = f"You have {len(return_list)} events for that day:"
     for i in range(len(return_list)):
-        return_str += f"{i + 1}. {return_list[i][0]} - {return_list[i][1]} at {return_list[i][2]}"
+        temp_str = ""
+        temp_str += f" #{i + 1} {return_list[i][0]} - {return_list[i][1]} with priority value {return_list[i][4]} at {return_list[i][2]} with {len(return_list[i][3])} people:"
+        for y in range(len(return_list[i][3])):
+            temp_str += f" {return_list[i][3][y]}"
+        temp_str += "."
+        return_str += temp_str
     return return_str
 
 
@@ -71,15 +79,20 @@ def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug
                 print(f"day is {day}")
         with open('calendar.json', 'r') as openfile:
             calendar = json.load(openfile)
-        print(day + x - bug_fix)
         events = calendar[str(year)][str(month)][str(day + x - bug_fix)]
-        print(events)
         for i in range(len(events)):
             return_list.append([events[str(i)]["Title"], events[str(i)]["Description"],
-                                f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}"])
+                                f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}", [], events[str(i)]["Priority"]])
+            for y in range(len(events[str(i)]["People"])):
+                return_list[i][3].append(events[str(i)]["People"][str(y)])
     return_str = f"You have {len(return_list)} events for that week: "
     for i in range(len(return_list)):
-        return_str += f"{i + 1}. {return_list[i][0]} - {return_list[i][1]} at {return_list[i][2]}"
+        temp_str = ""
+        temp_str += f" #{i + 1} {return_list[i][0]} - {return_list[i][1]} with priority value {return_list[i][4]} at {return_list[i][2]} with {len(return_list[i][3])} people:"
+        for y in range(len(return_list[i][3])):
+            temp_str += f" {return_list[i][3][y]}"
+        temp_str += "."
+        return_str += temp_str
     return return_str
 def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0, people_associated: list = []) -> str:
     """Use this function to create an event

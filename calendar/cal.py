@@ -1,6 +1,6 @@
 import calendar
 import datetime
-from read_events_from_date import read_event
+#from read_events_from_date import read_event
 import json
 import time
 # WARNING: Do not edit calendar.txt
