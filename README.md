@@ -3,7 +3,7 @@ This project helps you manage your calendar with the help of AI. I designed it t
 ## Requirements
 You will need SpeechRecognition, Pyaudio, and Phi assistant (instructions to come)
 ## Running
-First, install requirements in requirements.txt. (WIP)
+First, install requirements in requirements.txt. Sry no requirements yet - this is broken for now.
 ~~~bash
 pip install -r requirements.txt
 ~~~
