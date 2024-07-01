@@ -66,25 +66,50 @@ def find_gcal_events_day(day:int, month: int, year: int):
         print(f"An error occurred: {error}")
 
 
+def make_gcal_event(day:int, month: int, year: int, title: str, description: str, hour: int, minute: int):
+    try:
+        service = build("calendar", "v3", credentials=creds)
+        event = {
+            'summary': title,
+            'description': description,
+            'start': {
+                'dateTime': f'{year}-{month}-{day}T{hour}:{minute}:00-07:00',
+                'timeZone': 'America/Los_Angeles',
+            },
+            'end': {
+                'dateTime': f'{year}-{month}-{day}T{hour}:{minute}:00-07:00',
+                'timeZone': 'America/Los_Angeles',
+            }
+        }
 
+        event = service.events().insert(calendarId='primary', body=event).execute()
+        print('Event created: %s' % (event.get('htmlLink')))
+
+
+    except HttpError as error:
+        print(f"An error occurred: {error}")
 
 #print(find_gcal_events_day(1, 4, 2025))
 
 
 #make_gcal_event(1, 4, 2025, "Meeting with John", "Meet with John about the new prototype", 13, 30)
+# Initializes microphone
 recog = sr.Recognizer()
 microphone = sr.Microphone()
+# Records user audio to use as an input prompt
 print("listening...")
 with microphone as source:
     audio = recog.listen(source)
+# Converts the user's audio into text to be processed by the LLM
 prompt = recog.recognize_whisper(audio)
 print(prompt)
 assistant = Assistant(
-    tools=[find_gcal_events_day],
+    tools=[find_gcal_events_day, make_gcal_event],
     show_tool_calls=False,
     llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
-    description="You are a secretary assistant who provides helpful and concise information about the user's calendar. Use find_gcal_events_day to find events for one day.")
+    description="You are a secretary assistant who provides helpful and concise information about the user's calendar. Use find_gcal_events_day to find events for one day, and make_gcal_event to make a calendar event.")
 # show me whats happening on 1, 4, 2025
+# Runs the LLM with the prompt from the user
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)
@@ -97,4 +122,5 @@ print(response)
 #print(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
 #os.system("echo 'Welcome to the world of speech synthesis!' | piper --model en_US-lessac-medium --output_file welcome.wav") -- downloads model
 
+# Uses TTS to convert the output text of the LLM into audio speech
 os.system(f"echo '{response}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")

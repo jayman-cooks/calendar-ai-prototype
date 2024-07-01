@@ -8,13 +8,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Finished adding associated people and priority properties, added more to readme.">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendar/ai_gcal_add.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/calendar/ai_gcal_read.py" afterDir="false" />
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Added create events to google calendar. Started working on reading events from gcal.">
+      <change afterPath="$PROJECT_DIR$/calendar/gcal_total_assistant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/ai_gcal_read.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/ai_gcal_read.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +55,13 @@
   "keyToString": {
     "Python.Test.executor": "Run",
     "Python.ai_gcal_add.executor": "Run",
+    "Python.ai_gcal_read.executor": "Run",
     "Python.assistant.executor": "Run",
     "Python.cal testing.executor": "Run",
     "Python.cal.executor": "Run",
     "Python.create_event_ai.executor": "Run",
     "Python.find_events_in_week.executor": "Run",
+    "Python.gcal_total_assistant.executor": "Run",
     "Python.index_ics_calendar.executor": "Run",
     "Python.make_new_event.executor": "Run",
     "Python.read_events_ai.executor": "Run",
@@ -230,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719708232950</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Added create events to google calendar. Started working on reading events from gcal.">
+      <option name="closed" value="true" />
+      <created>1719786903396</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1719786903396</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -249,6 +258,7 @@
     <MESSAGE value="Switched speech recognition to whisper, added a find events in week function(potential bug), added a bit to readme." />
     <MESSAGE value="Fixed bug in find events in week function, started adding associated people property." />
     <MESSAGE value="Finished adding associated people and priority properties, added more to readme." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished adding associated people and priority properties, added more to readme." />
+    <MESSAGE value="Added create events to google calendar. Started working on reading events from gcal." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added create events to google calendar. Started working on reading events from gcal." />
   </component>
 </project>
