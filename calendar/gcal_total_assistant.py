@@ -33,6 +33,13 @@ if not creds or not creds.valid:
         token.write(creds.to_json())
 
 def find_gcal_events_day(day:int, month: int, year: int):
+    """
+    Finds Gcal events of user
+    :param day: the day of the event
+    :param month: the month of the event
+    :param year: the year of the event
+    :return: a string of all events the LLM can process
+    """
 
     try:
         service = build("calendar", "v3", credentials=creds)
@@ -67,6 +74,17 @@ def find_gcal_events_day(day:int, month: int, year: int):
 
 
 def make_gcal_event(day:int, month: int, year: int, title: str, description: str, hour: int, minute: int):
+    """
+
+    :param day: The day of the event you want to make
+    :param month: The month of the event you want to make
+    :param year: The year of the event you want to make
+    :param title: The title or summery of the event you want to make
+    :param description: A description of the event you want to make
+    :param hour: The hour in 24 hour time of the event you want to make
+    :param minute: The minute of the event you want to make
+    :return: a string repeating the information of the event created
+    """
     try:
         service = build("calendar", "v3", credentials=creds)
         event = {
@@ -89,10 +107,6 @@ def make_gcal_event(day:int, month: int, year: int, title: str, description: str
     except HttpError as error:
         print(f"An error occurred: {error}")
 
-#print(find_gcal_events_day(1, 4, 2025))
-
-
-#make_gcal_event(1, 4, 2025, "Meeting with John", "Meet with John about the new prototype", 13, 30)
 # Initializes microphone
 recog = sr.Recognizer()
 microphone = sr.Microphone()
@@ -113,14 +127,6 @@ assistant = Assistant(
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)
-
-
-#print(response.split(")")[1])
-#translation_table = dict.fromkeys(map(ord, '\n'), None)
-#tts_line = response.split(")")[1].translate(translation_table)
-#print(tts_line)
-#print(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
-#os.system("echo 'Welcome to the world of speech synthesis!' | piper --model en_US-lessac-medium --output_file welcome.wav") -- downloads model
 
 # Uses TTS to convert the output text of the LLM into audio speech
 os.system(f"echo '{response}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")

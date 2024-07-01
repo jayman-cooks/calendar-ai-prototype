@@ -13,7 +13,7 @@ int_to_str_months = {1: "January", 2: "February", 3: "March", 4: "April", 5: "Ma
 
 
 def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
-    """Use this function to find current events
+    """Use this function to find events in a given day from the local json
 
     Args:
         day (int): The day of the event
@@ -25,8 +25,12 @@ def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
     """
     with open('calendar.json', 'r') as openfile:
         calendar = json.load(openfile)
+    # Gets all events of the day in json format
+    if len(calendar[str(year)][str(month)][str(day)]) == 0:
+        return "There are no events for that day"
     events = calendar[str(year)][str(month)][str(day)]
     return_list = []
+    # Parses the json format into a list
     for i in range(len(events)):
         return_list.append([events[str(i)]["Title"], events[str(i)]["Description"],
                             f"{events[str(i)]['Date']['Hour']}:{events[str(i)]['Date']['Minute']}", [], events[str(i)]["Priority"]])
@@ -34,6 +38,7 @@ def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
             return_list[i][3].append(events[str(i)]["People"][str(y)])
     print(return_list)
     print(f"here are all the events: {calendar[str(year)][str(month)][str(day)]}")
+    # Converts the list into a single string that the LLM can understand
     return_str = f"You have {len(return_list)} events for that day:"
     for i in range(len(return_list)):
         temp_str = ""
@@ -46,7 +51,7 @@ def find_events(day: int = 1, month: int = 4, year: int = 2024) -> str:
 
 
 def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug if week extends out of month
-    """Use this function to find all events in a given week
+    """Use this function to find all events in a given week from local json
 
     Args:
         day (int): The first day of the week
@@ -59,11 +64,8 @@ def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug
     return_list = []
     bug_fix = 0 # to fix a bug that prevented it from searching correct days for month overflow
     days_in_month = calp.monthrange(year, month)[1]
-    if day + 7 > days_in_month:
-        print("There might be a bug")
-        if month > 11:
-            print("theres might be a bug")
     for x in range(7):
+        # Checks if the week will overflow into another month/year
         if day + x > days_in_month:
             print("uh oh there might be a bug")
             if month > 11:
@@ -94,8 +96,8 @@ def find_events_in_week(day: int, month: int, year: int) -> str: # potential bug
         temp_str += "."
         return_str += temp_str
     return return_str
-def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0, people_associated: list = []) -> str:
-    """Use this function to create an event
+def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str = "Testing - the description likely wasn't processed", title: str = "Error or testing", hour: int = 0, minutes: int = 0, people_associated: list = [], priority:int = 0) -> str:
+    """Use this function to create an event locally
 
     Args:
         day (int): The day of the event
@@ -116,6 +118,7 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
         index: {
             "Title": title,
             "Description": description,
+            "Priority": priority,
             "People": {},
             "Date": {
                 "Year": year,
@@ -134,11 +137,14 @@ def make_event(day: int = 1, month: int = 4, year: int = 2024, description: str 
         outfile.write(json_obj)
     return f"Created an event on {int_to_str_months[month]} {day} {year} with the title: {title}, description: {description}, at {hour}:{minutes}"
 
+# Initializes microphone
 recog = sr.Recognizer()
 microphone = sr.Microphone()
+# Records user audio to use as an input prompt
 print("listening...")
 with microphone as source:
     audio = recog.listen(source)
+# Converts the user's audio into text to be processed by the LLM
 prompt = recog.recognize_whisper(audio)
 print(prompt)
 assistant = Assistant(
@@ -147,17 +153,10 @@ assistant = Assistant(
     llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
     description="You are a secretary assistant who provides helpful and concise information about the user's calendar. If the user asks what is happening on a day, use find_events, but if they ask for a week, use find_events_in_week")
 # show me whats happening on 1, 4, 2025
+# Runs the LLM with the prompt from the user
 response = assistant.run(prompt, stream=False)
 print("Below is the response:")
 print(response)
-
-
-#print(response.split(")")[1])
-#translation_table = dict.fromkeys(map(ord, '\n'), None)
-#tts_line = response.split(")")[1].translate(translation_table)
-#print(tts_line)
-#print(f"echo '{tts_line}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
-#os.system("echo 'Welcome to the world of speech synthesis!' | piper --model en_US-lessac-medium --output_file welcome.wav") -- downloads model
 
 os.system(f"echo '{response}' | piper --model en_US-lessac-medium.onnx --output-raw | aplay -r 22050 -f S16_LE -t raw -")
 
