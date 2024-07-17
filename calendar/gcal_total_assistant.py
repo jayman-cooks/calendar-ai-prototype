@@ -74,17 +74,21 @@ def find_gcal_events_day(day:int, month: int, year: int):
 
 
 def make_gcal_event(day:int, month: int, year: int, title: str, description: str, hour: int, minute: int):
-    """
+    if os.path.exists("token.json"):
+        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                "credentials.json", SCOPES
+            )
+            creds = flow.run_local_server(port=0)
+        # Save the credentials for the next run
+        with open("token.json", "w") as token:
+          token.write(creds.to_json())
 
-    :param day: The day of the event you want to make
-    :param month: The month of the event you want to make
-    :param year: The year of the event you want to make
-    :param title: The title or summery of the event you want to make
-    :param description: A description of the event you want to make
-    :param hour: The hour in 24 hour time of the event you want to make
-    :param minute: The minute of the event you want to make
-    :return: a string repeating the information of the event created
-    """
     try:
         service = build("calendar", "v3", credentials=creds)
         event = {
@@ -117,14 +121,17 @@ with microphone as source:
 # Converts the user's audio into text to be processed by the LLM
 prompt = recog.recognize_whisper(audio)
 print(prompt)
-assistant = Assistant(
-    tools=[find_gcal_events_day, make_gcal_event],
-    show_tool_calls=False,
-    llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
-    description="You are a secretary assistant who provides helpful and concise information about the user's calendar. Use find_gcal_events_day to find events for one day, and make_gcal_event to make a calendar event.")
-# show me whats happening on 1, 4, 2025
-# Runs the LLM with the prompt from the user
-response = assistant.run(prompt, stream=False)
+def run_assistant(prompt):
+    assistant = Assistant(
+        tools=[find_gcal_events_day, make_gcal_event],
+        show_tool_calls=False,
+        llm=Hermes(model="adrienbrault/nous-hermes2pro:Q8_0"),
+        description="You are a secretary assistant who provides helpful and concise information about the user's calendar. Use find_gcal_events_day to find events for one day, and make_gcal_event to make a calendar event.")
+    # show me whats happening on 1, 4, 2025
+    # Runs the LLM with the prompt from the user
+    response = assistant.run(prompt, stream=False)
+    return response
+response = run_assistant(prompt)
 print("Below is the response:")
 print(response)
 
