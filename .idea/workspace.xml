@@ -10,7 +10,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Cleaned up the project, fixed a couple bugs, and updated readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/calendar/gcal_total_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/gcal_total_assistant.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/chatgpt_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/chatgpt_version.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +33,12 @@
     &quot;assignee&quot;: &quot;jmancodes27&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jmancodes27/calendar-ai-prototype.git&quot;,
-    &quot;accountId&quot;: &quot;7c86eb39-8fd5-41af-93d0-551a0b1dd81f&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jmancodes27/calendar-ai-prototype.git",
+    "accountId": "49fc5ee6-77eb-49c9-89c4-1e16508f3cf5"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -48,36 +48,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ai_gcal_add.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ai_gcal_read.executor&quot;: &quot;Run&quot;,
-    &quot;Python.assistant.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cal testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.cal.executor&quot;: &quot;Run&quot;,
-    &quot;Python.create_event_ai.executor&quot;: &quot;Run&quot;,
-    &quot;Python.find_events_in_week.executor&quot;: &quot;Run&quot;,
-    &quot;Python.gcal_total_assistant.executor&quot;: &quot;Run&quot;,
-    &quot;Python.index_ics_calendar.executor&quot;: &quot;Run&quot;,
-    &quot;Python.make_new_event.executor&quot;: &quot;Run&quot;,
-    &quot;Python.read_events_ai.executor&quot;: &quot;Run&quot;,
-    &quot;Python.read_events_from_date.executor&quot;: &quot;Run&quot;,
-    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
-    &quot;Python.testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.testing_one.executor&quot;: &quot;Run&quot;,
-    &quot;Python.total_assistant.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Test.executor": "Run",
+    "Python.ai_gcal_add.executor": "Run",
+    "Python.ai_gcal_read.executor": "Run",
+    "Python.assistant.executor": "Run",
+    "Python.cal testing.executor": "Run",
+    "Python.cal.executor": "Run",
+    "Python.chatgpt_version.executor": "Run",
+    "Python.create_event_ai.executor": "Run",
+    "Python.find_events_in_week.executor": "Run",
+    "Python.gcal_total_assistant.executor": "Run",
+    "Python.index_ics_calendar.executor": "Run",
+    "Python.make_new_event.executor": "Run",
+    "Python.read_events_ai.executor": "Run",
+    "Python.read_events_from_date.executor": "Run",
+    "Python.scratch.executor": "Run",
+    "Python.testing.executor": "Run",
+    "Python.testing_one.executor": "Run",
+    "Python.total_assistant.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;TEXT&quot;,
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT",
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/calendar/old version" />
