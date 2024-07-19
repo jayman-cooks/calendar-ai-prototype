@@ -8,9 +8,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Cleaned up the project, fixed a couple bugs, and updated readme">
+    <list default="true" id="bec29daa-9071-45ef-967b-e11056ecf2c3" name="Changes" comment="Mostly finished using chatgpt to read events from gcal. No audio functionality though, since I'm trying to use this for the server. I still need to fine tune the prompts and settings to minimize tokens and provide better outputs.">
+      <change afterPath="$PROJECT_DIR$/calendar/chatgpt_create_event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/calendar/chatgpt_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/chatgpt_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/calendar/gcal_total_assistant.py" beforeDir="false" afterPath="$PROJECT_DIR$/calendar/gcal_total_assistant.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +35,12 @@
     &quot;assignee&quot;: &quot;jmancodes27&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/jmancodes27/calendar-ai-prototype.git",
-    "accountId": "49fc5ee6-77eb-49c9-89c4-1e16508f3cf5"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jmancodes27/calendar-ai-prototype.git&quot;,
+    &quot;accountId&quot;: &quot;49fc5ee6-77eb-49c9-89c4-1e16508f3cf5&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -56,6 +58,7 @@
     "Python.assistant.executor": "Run",
     "Python.cal testing.executor": "Run",
     "Python.cal.executor": "Run",
+    "Python.chatgpt_create_event.executor": "Run",
     "Python.chatgpt_version.executor": "Run",
     "Python.create_event_ai.executor": "Run",
     "Python.find_events_in_week.executor": "Run",
@@ -70,6 +73,7 @@
     "Python.total_assistant.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/john/PycharmProjects/calendar prototype/calendar",
     "run.code.analysis.last.selected.profile": "pProject Default"
   },
   "keyToStringList": {
@@ -80,6 +84,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/calendar" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/calendar/old version" />
       <recent name="$PROJECT_DIR$" />
@@ -254,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719872419131</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Mostly finished using chatgpt to read events from gcal. No audio functionality though, since I'm trying to use this for the server. I still need to fine tune the prompts and settings to minimize tokens and provide better outputs.">
+      <option name="closed" value="true" />
+      <created>1721330706239</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1721330706239</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -276,6 +291,7 @@
     <MESSAGE value="Added create events to google calendar. Started working on reading events from gcal." />
     <MESSAGE value="Finished gcal reading function, combined the two gcal functions into one assistant, and updated readme." />
     <MESSAGE value="Cleaned up the project, fixed a couple bugs, and updated readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up the project, fixed a couple bugs, and updated readme" />
+    <MESSAGE value="Mostly finished using chatgpt to read events from gcal. No audio functionality though, since I'm trying to use this for the server. I still need to fine tune the prompts and settings to minimize tokens and provide better outputs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Mostly finished using chatgpt to read events from gcal. No audio functionality though, since I'm trying to use this for the server. I still need to fine tune the prompts and settings to minimize tokens and provide better outputs." />
   </component>
 </project>

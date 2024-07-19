@@ -106,6 +106,7 @@ def make_gcal_event(day:int, month: int, year: int, title: str, description: str
 
         event = service.events().insert(calendarId='primary', body=event).execute()
         print('Event created: %s' % (event.get('htmlLink')))
+        return 'Event created: %s' % (event.get('htmlLink'))
 
 
     except HttpError as error:
